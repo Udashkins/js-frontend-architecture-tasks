@@ -8,17 +8,14 @@ export default function () {
   const tasksContainer = document.querySelector('[data-container="tasks"]');
 
   let lists = [{ id: uniqueId(), name: 'General' }];
-  let tasks = {}; // { 'listId': ['task1', 'task2'], ... }
+  let tasks = {}; 
 
-  // Initial render: add General list
   renderLists();
-
-  // Event listeners
   newListForm.addEventListener('submit', addList);
   newTaskForm.addEventListener('submit', addTask);
 
   function renderLists() {
-    listsContainer.innerHTML = ''; // Clear existing lists
+    listsContainer.innerHTML = ''; 
 
     const ul = document.createElement('ul');
     lists.forEach(list => {
@@ -50,7 +47,7 @@ const renderTasks = () => {
   function getActiveList() {
     const ActiveListElement = listsContainer.querySelector('li:first-child');
     if (!ActiveListElement) {
-        return { id: lists[0].id, name: lists[0].name }; // Default to 'General' if no list is selected
+        return { id: lists[0].id, name: lists[0].name };
     }
 
     const listName = ActiveListElement.textContent;
@@ -82,7 +79,7 @@ const renderTasks = () => {
 
     if (taskName && activeList) {
         if (!tasks[activeList.id]) {
-            tasks[activeList.id] = []; // Initialize if list doesn't exist
+            tasks[activeList.id] = []; 
         }
         tasks[activeList.id].push(taskName);
         renderTasks();
